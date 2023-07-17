@@ -3,10 +3,129 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfDemoApp"
+        xmlns:local="clr-namespace:WpfDemoApp.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Main Window" Height="450" Width="800">
+        <!--Style="{StaticResource FixedWindowStyle}"-->
+
+    <Window.Resources>
+        
+        <!--<local:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />-->
+
+        <!--<Style x:Key="CustomMenuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="10,5" />
+        </Style>
+
+        <Style x:Key="CustomMenuItemStyle" TargetType="MenuItem">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="MenuItem">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0,1,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Content="{TemplateBinding Header}" Margin="5,0" />
+                                <Popup x:Name="SubMenuPopup"
+                                       Placement="Right"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       AllowsTransparency="True">
+                                    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+                                        <ScrollViewer>
+                                            <StackPanel IsItemsHost="True" Orientation="Vertical" HorizontalAlignment="Left" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                                <Path x:Name="Arrow" Grid.Column="1"
+                                      Data="M0,0 L4,4 L8,0 Z" Fill="Gray" VerticalAlignment="Center"
+                                      Visibility="{Binding HasItems, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="SubMenuPopup" Property="IsOpen" Value="True" />
+                                <Setter TargetName="Arrow" Property="Fill" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+    </Window.Resources>
     <Grid>
+        <Menu>
+            <MenuItem Header="file">
+                <MenuItem Header="save"/>
+            </MenuItem>
+            <MenuItem Header="open"></MenuItem>
+        </Menu>
         
     </Grid>
+
+    <!--<Grid>
+        <Menu Style="{StaticResource CustomMenuStyle}">
+            <MenuItem Header="File" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" />
+                    </ItemsPanelTemplate>
+                </MenuItem.ItemsPanel>
+                <MenuItem.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="5,0" />
+                    </DataTemplate>
+                </MenuItem.HeaderTemplate>
+                <MenuItem Header="New" />
+                <MenuItem Header="Open" />
+                <Separator />
+                <MenuItem Header="Save" />
+                <MenuItem Header="Save As" />
+                <Separator />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Edit" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" />
+                    </ItemsPanelTemplate>
+                </MenuItem.ItemsPanel>
+                <MenuItem.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="5,0" />
+                    </DataTemplate>
+                </MenuItem.HeaderTemplate>
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+                <Separator />
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+            </MenuItem>
+            <MenuItem Header="View" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" />
+                    </ItemsPanelTemplate>
+                </MenuItem.ItemsPanel>
+                <MenuItem.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="5,0" />
+                    </DataTemplate>
+                </MenuItem.HeaderTemplate>
+                <MenuItem Header="Zoom In" />
+                <MenuItem Header="Zoom Out" />
+                <MenuItem Header="Reset Zoom" />
+            </MenuItem>
+            --><!-- Add more menu items as needed --><!--
+        </Menu>
+    </Grid>-->
+    
 </Window>
