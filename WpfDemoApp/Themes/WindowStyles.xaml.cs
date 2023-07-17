@@ -4,25 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace WpfDemoApp
+namespace WpfDemoApp.Themes
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowStyles : ResourceDictionary
     {
-        public MainWindow()
+        public WindowStyles()
         {
             InitializeComponent();
+        }
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            UIElement element = e.Source as UIElement;
+            Window targetWindow = Window.GetWindow(element);
+            targetWindow?.Close();
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)
