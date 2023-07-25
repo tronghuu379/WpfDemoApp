@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:WpfDemoApp.Converters"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Window1" Height="450" Width="800">
-
-
+        Title="Window1" Height="450" Width="800" >
     <Window.Resources>
         <!--<BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />-->
 
@@ -26,10 +24,10 @@
             <Setter Property="Margin" Value="0,1" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="MenuItem">
+                    <ControlTemplate x:Name="MenuItemCustome" TargetType="MenuItem">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}">
-                            <Grid>
+                            <Grid x:Name="MenuItemCustome">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -54,6 +52,22 @@
                                 <Setter TargetName="SubMenuPopup" Property="IsOpen" Value="True" />
                                 <!--<Setter TargetName="SubMenuPopup" Property="" Value="Black" />-->
                             </Trigger>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#494949" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#606060" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#D71A21" />
+                            </Trigger>
+                            <!--<Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="MenuIcon" Property="Fill" Value="#BCBCBC" />
+                                <Setter TargetName="MenuHeader" Property="Foreground" Value="#BCBCBC" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding ElementName=MenuIcon, Path=Data}" Value="{x:Null}">
+                                <Setter TargetName="MenuIcon" Property="Margin" Value="0" />
+                            </DataTrigger>-->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

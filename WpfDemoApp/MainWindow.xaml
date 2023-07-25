@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Main Window" Height="450" Width="800">
-        <!--Style="{StaticResource FixedWindowStyle}"-->
+    <!--Style="{StaticResource FixedWindowStyle}"-->
 
     <Window.Resources>
-        
+
         <!--<local:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />-->
 
         <!--<Style x:Key="CustomMenuStyle" TargetType="Menu">
@@ -61,13 +61,17 @@
         </Style>-->
     </Window.Resources>
     <Grid>
-        <Menu>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="595*"/>
+            <ColumnDefinition Width="198*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2">
             <MenuItem Header="file">
                 <MenuItem Header="save"/>
             </MenuItem>
             <MenuItem Header="open"></MenuItem>
         </Menu>
-        
+
     </Grid>
 
     <!--<Grid>
@@ -124,8 +128,10 @@
                 <MenuItem Header="Zoom Out" />
                 <MenuItem Header="Reset Zoom" />
             </MenuItem>
-            --><!-- Add more menu items as needed --><!--
+            -->
+    <!-- Add more menu items as needed -->
+    <!--
         </Menu>
     </Grid>-->
-    
+
 </Window>
