@@ -8,11 +8,83 @@
         Style="{StaticResource FixedWindowStyle}"
         Title="Window2" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
     <Window.Resources>
-        
+        <Style x:Key="CustomMenuStyle" TargetType="Menu">
+            <Setter Property="Background" Value="#2C3E50"/>
+            <Setter Property="BorderBrush" Value="#34495E"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
 
+        <ControlTemplate x:Key="CustomMenuItemTemplate" TargetType="{x:Type MenuItem}">
+            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid>
+                    <ContentPresenter ContentSource="Header"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="10"/>
+                    <Popup x:Name="PART_Popup"
+                           AllowsTransparency="True"
+                           Placement="Bottom"
+                           IsOpen="{TemplateBinding IsSubmenuOpen}"
+                           Focusable="False">
+                        <Border x:Name="SubMenuBorder"
+                                BorderBrush="#34495E"
+                                BorderThickness="1"
+                                Background="#2C3E50">
+                            <StackPanel IsItemsHost="True"/>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="PART_Popup" Property="IsOpen" Value="True"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="CustomMenuItemStyle" TargetType="MenuItem">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Template" Value="{StaticResource CustomMenuItemTemplate}"/>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#2C3E50"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
-    
-    <Grid Background="AliceBlue">
-        <Button x:Name="test" Content="Test"/>
+
+    <Grid>
+        <Menu Style="{StaticResource CustomMenuStyle}">
+            <MenuItem Header="File" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+
+            <MenuItem Header="Edit" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem Header="Cut"/>
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+
+            <MenuItem Header="Help" Style="{StaticResource CustomMenuItemStyle}">
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

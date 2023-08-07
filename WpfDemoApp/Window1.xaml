@@ -4,30 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfDemoApp.Converters"
+        xmlns:menu="clr-namespace:WpfDemoApp.Themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Window1" Height="450" Width="800" >
     <Window.Resources>
-        <!--<BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />-->
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Dictionary1.xaml" />
+                <ResourceDictionary Source="/Themes/Dictionary2.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
         <!-- Define styles for the Menu and MenuItem controls -->
-        <Style x:Key="CustomMenuStyle" TargetType="Menu">
+        <!--<Style x:Key="CustomMenuStyle" TargetType="Menu">
             <Setter Property="Background" Value="LightGray" />
             <Setter Property="BorderBrush" Value="Gray" />
             <Setter Property="BorderThickness" Value="0,0,0,1" />
-            <Setter Property="Padding" Value="10,5" />
-        </Style>
+            <Setter Property="Padding" Value="0" />
+        </Style>-->
 
-        <Style x:Key="CustomMenuItemStyle" TargetType="MenuItem">
+        <!--<Style x:Key="CustomMenuItemStyle" TargetType="MenuItem">
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Padding" Value="10" />
-            <Setter Property="Margin" Value="0,1" />
+            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="20"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate x:Name="MenuItemCustome" TargetType="MenuItem">
+                    <ControlTemplate x:Name="MenuItemCustom" TargetType="MenuItem">
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}">
-                            <Grid x:Name="MenuItemCustome">
+                            <Grid x:Name="MenuItemCustom">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -42,247 +51,106 @@
                                         <StackPanel IsItemsHost="True" Orientation="Vertical" />
                                     </Border>
                                 </Popup>
-                                <!--<Path x:Name="Arrow" Grid.Column="1"
-                                      Data="M0,0 L4,4 L8,0 Z" Fill="Gray" VerticalAlignment="Center"
-                                      Visibility="{Binding HasItems, Converter={StaticResource BoolToVisibilityConverter}}" />-->
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="SubMenuPopup" Property="IsOpen" Value="True" />
-                                <!--<Setter TargetName="SubMenuPopup" Property="" Value="Black" />-->
+                                --><!--<Setter TargetName="SubMenuPopup" Property="" Value="Black" />--><!--
                             </Trigger>
                             <Trigger Property="IsHighlighted" Value="True">
-                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#494949" />
+                                <Setter TargetName="MenuItemCustom" Property="Background" Value="#494949" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#606060" />
+                                <Setter TargetName="MenuItemCustom" Property="Background" Value="#606060" />
                             </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="MenuItemCustome" Property="Background" Value="#D71A21" />
+                                <Setter TargetName="MenuItemCustom" Property="Background" Value="#D71A21" />
                             </Trigger>
-                            <!--<Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="MenuIcon" Property="Fill" Value="#BCBCBC" />
-                                <Setter TargetName="MenuHeader" Property="Foreground" Value="#BCBCBC" />
-                            </Trigger>
-                            <DataTrigger Binding="{Binding ElementName=MenuIcon, Path=Data}" Value="{x:Null}">
-                                <Setter TargetName="MenuIcon" Property="Margin" Value="0" />
-                            </DataTrigger>-->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
         
-        <Style x:Key="CustomSubMenuItemStyle" TargetType="MenuItem">
-            <Setter Property="BorderThickness" Value="0" />
-            <!--<Setter Property="Background" Value="White" />-->
-            <!--<Setter Property="HorizontalAlignment" Value="Center" />-->
-            <!--<Setter Property="Template">
+
+        <!--<Style x:Key="CustomMenuItemStyle" TargetType="{x:Type MenuItem}">
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="ClipToBounds" Value="True" />
+            <Setter Property="Padding" Value="22,0" />
+            <Setter Property="Height" Value="44" />
+            <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0">
-                            <ContentPresenter Content="{TemplateBinding Header}" />
+                    <ControlTemplate TargetType="{x:Type MenuItem}">
+                        <Border x:Name="MenuBody"
+                            Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            
+                            <Grid x:Name="MenuItemCustom">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock x:Name="MenuHeader" Foreground="{TemplateBinding Foreground}"
+                                           VerticalAlignment="Center" Text="{TemplateBinding Header}" />
+                                </StackPanel>
+                                --><!--<ContentPresenter Grid.Row="0" Content="{TemplateBinding Header}" Margin="5,0" />--><!--
+                                <Popup Grid.Row="1" x:Name="SubMenuPopup"
+                                       Placement="Bottom"
+                                       IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                       AllowsTransparency="True">
+
+                                    <Border Background="Black">
+                                        <TextBlock IsItemsHost="True" Orientation="Vertical" />
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                            
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsHighlighted" Value="True">
-                                --><!--<Setter Property="Background" Value="Gray" />--><!--
-                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter TargetName="MenuBody" Property="Background" Value="#494949" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="MenuBody" Property="Background" Value="#606060" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="MenuBody" Property="Background" Value="#D71A21" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="MenuHeader" Property="Foreground" Value="#BCBCBC" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>-->
-        </Style>
-        <!-- Define a Boolean to Visibility converter -->
+            </Setter>
+        </Style>-->
+
+
+        
+
     </Window.Resources>
 
     <Grid>
-        <Menu Style="{StaticResource CustomMenuStyle}">
-            <MenuItem Header="File" Style="{StaticResource CustomMenuItemStyle}">
-                <MenuItem Header="New" Style="{StaticResource CustomSubMenuItemStyle}"/>
-                <MenuItem Header="Open" BorderThickness="0"/>
-                <Separator />
-                <MenuItem Header="Save" />
-                <MenuItem Header="Save As" />
-                <Separator />
-                <MenuItem Header="Exit" />
-            </MenuItem>
-            <MenuItem Header="Edit" Style="{StaticResource CustomMenuItemStyle}">
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-            </MenuItem>
-            
-            <!-- Add more menu items as needed -->
-        </Menu>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Style="{StaticResource MenuStyle1}">
+                <MenuItem Header="File" Style="{StaticResource MenuItemStyle1}">
+                    <MenuItem Header="New" />
+                    <MenuItem Header="Open"/>
+                    <Separator />
+                    <MenuItem Header="Save" />
+                    <MenuItem Header="Save As" />
+                    <Separator />
+                    <MenuItem Header="Exit" />
+                </MenuItem>
+                <MenuItem Header="Edit" Style="{StaticResource MenuItemStyle1}">
+                    <MenuItem Header="Cut" />
+                    <MenuItem Header="Copy" />
+                    <MenuItem Header="Paste" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
-
-
-    <!--<Menu Width="400" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <MenuItem>
-                <MenuItem.Header>
-                    <WrapPanel>
-                        <TextBlock Text="File" />
-                        <ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                            -->
-    <!--<Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />-->
-    <!--
-                        </ToggleButton>
-                    </WrapPanel>
-                </MenuItem.Header>
-                <MenuItem.Template>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Grid>
-                            <ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                                -->
-    <!--<Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />-->
-    <!--
-                            </ToggleButton>
-                            <Popup x:Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}" Placement="Right" AllowsTransparency="True" StaysOpen="False">
-                                <Border Background="White" BorderBrush="Gray" BorderThickness="1">
-                                    <StackPanel IsItemsHost="True" />
-                                </Border>
-                            </Popup>
-                            <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="PART_Popup" Property="IsOpen" Value="True" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </MenuItem.Template>
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-            </MenuItem>
-        </Menu>-->
-
-
-    <!--<Menu>
-            <MenuItem>
-                <MenuItem.Header>
-                    <WrapPanel HorizontalAlignment="Right">
-                        <TextBlock Text="File" />
-                        <ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />
-                        </ToggleButton>
-                    </WrapPanel>
-                </MenuItem.Header>
-                <MenuItem.Template>
-                    <ControlTemplate TargetType="MenuItem">
-                        <Grid>
-                            <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                            <ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                                <Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />
-                            </ToggleButton>
-                            <Popup x:Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}" Placement="Bottom" AllowsTransparency="True" StaysOpen="False">
-                                <Border Background="White" BorderBrush="Gray" BorderThickness="1">
-                                    <StackPanel IsItemsHost="True" />
-                                </Border>
-                            </Popup>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="PART_Popup" Property="IsOpen" Value="True" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </MenuItem.Template>
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-            </MenuItem>
-        </Menu>-->
-
-    <!--<Menu>
-            <MenuItem>
-                <MenuItem.Header>
-                    <DockPanel Width="150">
-                        <TextBlock Text="File" />
-                        -->
-    <!--<ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                            <Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />
-                        </ToggleButton>-->
-    <!--
-                    </DockPanel>
-                </MenuItem.Header>
-                <MenuItem.Template>
-                    <ControlTemplate TargetType="MenuItem" >
-                        <DockPanel HorizontalAlignment="Right">
-                            <ToggleButton x:Name="PART_ToggleButton" IsChecked="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
-                                -->
-    <!--<Path Data="M0,0 L4,4 L8,0 Z" Fill="Black" />-->
-    <!--
-                            </ToggleButton>
-                            <Popup x:Name="PART_Popup" IsOpen="{Binding IsChecked, ElementName=PART_ToggleButton}" HorizontalAlignment="Right" Placement="Bottom" AllowsTransparency="True" StaysOpen="False">
-                                <Border Background="White" BorderBrush="Gray" BorderThickness="1">
-                                    <StackPanel IsItemsHost="True" />
-                                </Border>
-                            </Popup>
-                            <ContentPresenter Content="{TemplateBinding Header}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                        </DockPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="PART_Popup" Property="IsOpen" Value="True" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </MenuItem.Template>
-                <MenuItem Header="New" HorizontalAlignment="Left"/>
-                <MenuItem Header="Open" HorizontalAlignment="Left" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-            </MenuItem>
-        </Menu>-->
-
-
-    <!--<Menu Width="500" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
-            <MenuItem Header="File">
-                <MenuItem.Template>
-                    <ControlTemplate TargetType="MenuItem">
-                        <DockPanel>
-                            <ContentPresenter ContentSource="Header" />
-                            <Popup x:Name="PART_Popup" IsOpen="{TemplateBinding IsSubmenuOpen}"
-                                     Placement="Left" 
-                                     PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
-                                <Grid>
-                                    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
-                                        <StackPanel IsItemsHost="True" />
-                                    </Border>
-                                </Grid>
-                            </Popup>
-                        </DockPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsHighlighted" Value="True">
-                                <Setter TargetName="PART_Popup" Property="IsOpen" Value="True" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </MenuItem.Template>
-                <MenuItem Header="New" />
-                <MenuItem Header="Open" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-            </MenuItem>
-
-        </Menu>-->
-    <!--</Grid>-->
 </Window>

@@ -60,7 +60,7 @@ namespace WpfDemoApp.Themes
 
         private void AdjustWindowSize()
         {
-            minimizeButton.Content = "";
+            //minimizeButton.Content = "";
         }
     }
 }
