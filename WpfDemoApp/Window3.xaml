@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:WpfDemoApp"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Window3" Height="450" Width="800">
+        <!--https://drive.google.com/file/d/1bcQgI4YFddktyHnfl_OXWlYsvHu9gLyk/view?usp=sharing-->
+    <!--https://drive.google.com/file/d/1byRCeHS4WE-KUZ_AVDf9CPlSaoMz5ec7/view?usp=sharing-->
     <Window.Resources>
         <Style x:Key="CustomMenuStyle" TargetType="Menu">
             <Setter Property="Background" Value="#2C3E50"/>
@@ -98,5 +100,4 @@
             </MenuItem>
         </Menu>
     </Grid>
-
 </Window>

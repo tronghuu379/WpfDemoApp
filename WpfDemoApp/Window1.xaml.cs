@@ -21,7 +21,7 @@ namespace WpfDemoApp
     {
         public Window1()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
